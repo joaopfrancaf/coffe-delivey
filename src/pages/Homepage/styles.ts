@@ -9,13 +9,16 @@ export const DivHeaderStyled = styled('div', {
 })
 
 export const DivHeaderTextStyled = styled('div', {
-    height: ''
 })
 
 export const DivHeaderH1Styled = styled('div', {
+    width: '36.75rem',
+    fontFamily: '',
+    marginBottom: '1rem'
 })
 
 export const DivHeaderPStyled = styled('div', {
+    marginBottom: '4.125rem'
 })
 
 export const DivHeaderFeatureStyled = styled('div', {

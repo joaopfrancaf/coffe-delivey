@@ -12,6 +12,7 @@ export default function Homepage() {
                 <DivHeaderPStyled>
                     <p>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
                 </DivHeaderPStyled>
+                
                 <DivHeaderFeatureStyled>
                     <ShoppingCart/> <span>Compra simples e segura</span>
                 </DivHeaderFeatureStyled>
