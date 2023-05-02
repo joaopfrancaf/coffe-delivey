@@ -1,7 +1,11 @@
 import { styled } from "../../styles/stitches.config";
 
 export const HeaderDiv = styled('div', {
-    padding: '2rem 0 2rem 0',
+    width: '100%',
+    maxWidth: 1120,
+    margin: '0 auto',
+    padding: '2rem 1.5rem 2rem 1.5rem',
+    
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',

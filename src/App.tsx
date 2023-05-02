@@ -1,14 +1,12 @@
 import Header from "./components/Header";
-import { ContainerStyled } from "./styles";
-import Homepage from './pages/Homepage'
-import Checkout from "./pages/Checkout";
+import Homehero from './components/Homehero'
 
 export default function App() {
 
   return (
-    <ContainerStyled>
-      <Header/>
-      <Checkout/>
-    </ContainerStyled>
+    <>
+      <Header />
+      <Homehero />
+    </>
   )
 }
