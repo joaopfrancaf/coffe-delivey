@@ -1,5 +1,5 @@
-import { ButtonWrapp, DivCheckoutContainer, DivCheckoutSeuPedido, DivCheckoutSeuPedidoContainer, DivCheckoutSeuPedidoEndereco, DivDescricao, DivForm, DivPagamento, InputStyled } from "./style";
-import { MapPin, CurrencyDollar } from "@phosphor-icons/react";
+import { ButtonDiv, ButtonWrapp, DivCheckoutContainer, DivCheckoutSeuPedido, DivCheckoutSeuPedidoContainer, DivCheckoutSeuPedidoEndereco, DivDescricao, DivForm, DivPagamento, InputStyled } from "./style";
+import { MapPin, CurrencyDollar, CreditCard, Bank, Money } from "@phosphor-icons/react";
 
 export default function Checkout() {
     return (
@@ -38,7 +38,9 @@ export default function Checkout() {
                 </DivDescricao>
 
                 <ButtonWrapp>
-                    
+                    <ButtonDiv id="CARTAO_DE_CREDITO" name="drone" value="CARTÃO DE CREDITO"><CreditCard color="#8047F8"/>CARTÃO DE CREDITO</ButtonDiv>
+                    <ButtonDiv id="CARTAO_DE_DEBITO" name="drone" value="CARTÃO DE DEBITO"><Bank color="#8047F8"/>CARTÃO DE DEBITO</ButtonDiv>
+                    <ButtonDiv id="DINHEIRO" name="drone" value="DINHEIRO"><Money color="#8047F8"/>DINHEIRO</ButtonDiv>
                 </ButtonWrapp>
             </DivPagamento>
         </DivCheckoutContainer>
