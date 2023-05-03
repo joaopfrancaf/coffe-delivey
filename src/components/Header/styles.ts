@@ -32,11 +32,13 @@ export const DivLocal = styled('div', {
     gap: 5
 })
 
-export const DivCashOut = styled('div', {
+export const DivCashOut = styled('button', {
     backgroundColor: '$--brand---yellow--light',
     padding: 10,
     borderRadius: 6,
     height: '2.5rem',
+    borderStyle: 'none',
+    cursor: 'pointer',
     
     display: 'flex',
     alignItems: 'center',
