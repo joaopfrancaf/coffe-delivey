@@ -18,14 +18,15 @@ export const DivHeaderTextStyled = styled('div', {
 })
 
 export const DivHeaderH1Styled = styled('div', {
+    paddingBottom: '2rem',
     width: '30rem',
-    marginBottom: '1rem',
     fontSize: '1.3rem',
     color: '$--base---title'
 })
 
 export const DivHeaderPStyled = styled('div', {
     width: '30rem',
+    fontSize: '1.1rem',
     lineHeight: '1.5rem',
     marginBottom: '4.125rem'
 })
@@ -38,11 +39,34 @@ export const DivHeaderFeatureStyled = styled('div', {
 
     div: {
         display: 'flex',
-        gap: '1rem'
+        alignItems: 'center',
+        gap: '1rem',
+        lineHeight: '2rem'
     }
 })
 
 export const EUNAOAGUENTOMAISDIV =styled('div', {
-    width: '1rem',
-    backgroundColor: '$--base---button'
+    height: 25,
+    width: 25,
+    borderRadius: '50%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '$--base---button',
+
+
+    '&.ShoppingCart': {
+        backgroundColor: '$--brand-----yellow--dark'
+    },
+
+    '&.Package': {
+        backgroundColor: '$--base---text'
+    },
+    
+    '&.Timer': {
+        backgroundColor: '$--brand-----yellow'
+    },
+
+    '&.Coffee': {
+        backgroundColor: '$--brand---purple'
+    },
 })
