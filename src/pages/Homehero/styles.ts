@@ -19,8 +19,8 @@ export const DivHeaderTextStyled = styled('div', {
 
 export const DivHeaderH1Styled = styled('div', {
     paddingBottom: '2rem',
-    width: '30rem',
-    fontSize: '1.3rem',
+    width: '34rem',
+    fontSize: '1.4rem',
     color: '$--base---title',
 
     h1: {
@@ -39,9 +39,9 @@ export const DivHeaderPStyled = styled('div', {
 
 export const DivHeaderFeatureStyled = styled('div', {
     width: '35rem',
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '1rem',
+    display: 'grid',
+    gridTemplateColumns: '16rem 20rem',
+    gridTemplateRows: '4.5rem',
 
     div: {
         display: 'flex',
@@ -52,8 +52,8 @@ export const DivHeaderFeatureStyled = styled('div', {
 })
 
 export const EUNAOAGUENTOMAISDIV =styled('div', {
-    height: 25,
-    width: 25,
+    height: 30,
+    width: 30,
     borderRadius: '50%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -89,7 +89,7 @@ export const DivCafeContainer = styled('div', {
 })
 
 export const DivCafeContainerWrap = styled('div', {
-    marginTop: '3rem',
+    marginTop: '4rem',
     display: 'flex',
     flexWrap: 'wrap',
     gap: '2.2rem',

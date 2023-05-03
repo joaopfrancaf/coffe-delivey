@@ -16,10 +16,10 @@ export default function Homehero() {
                     </DivHeaderPStyled>
 
                     <DivHeaderFeatureStyled>
-                        <div><EUNAOAGUENTOMAISDIV className="ShoppingCart"><ShoppingCart fill="white"/></EUNAOAGUENTOMAISDIV><span>Compra simples e segura</span></div>
-                        <div><EUNAOAGUENTOMAISDIV className="Package"><Package  fill="white"/></EUNAOAGUENTOMAISDIV><span>Embalagem mantém o café intacto</span></div>
-                        <div><EUNAOAGUENTOMAISDIV className="Timer" ><Timer fill="white"/></EUNAOAGUENTOMAISDIV><span>Entrega rápida e rastreada</span></div>
-                        <div><EUNAOAGUENTOMAISDIV className="Coffee"><Coffee fill="white"/></EUNAOAGUENTOMAISDIV><span>O café chega fresquinho até você</span></div>
+                        <div><EUNAOAGUENTOMAISDIV className="ShoppingCart"><ShoppingCart fill="white" weight="fill"/></EUNAOAGUENTOMAISDIV><span>Compra simples e segura</span></div>
+                        <div><EUNAOAGUENTOMAISDIV className="Package"><Package  fill="white" weight="fill"/></EUNAOAGUENTOMAISDIV><span>Embalagem mantém o café intacto</span></div>
+                        <div><EUNAOAGUENTOMAISDIV className="Timer" ><Timer fill="white" weight="fill"/></EUNAOAGUENTOMAISDIV><span>Entrega rápida e rastreada</span></div>
+                        <div><EUNAOAGUENTOMAISDIV className="Coffee"><Coffee fill="white" weight="fill"/></EUNAOAGUENTOMAISDIV><span>O café chega fresquinho até você</span></div>
                     </DivHeaderFeatureStyled>
                 </DivHeaderTextStyled>
 
