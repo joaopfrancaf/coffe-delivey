@@ -62,6 +62,7 @@ export const DivPagamento = styled ('div', {
     borderRadius: 6,
     
     padding: 40,
+    marginBottom: '2rem'
 })
 
 export const DivDescricao = styled ('div', {
@@ -106,4 +107,27 @@ export const ButtonDiv = styled('button', {
     "&:hover": {
         backgroundColor: '$--base---hover',
     },
+})
+
+export const DivCheckoutCarrinho = styled('div', {
+    width: 'fit-content',
+    height: '31rem',
+
+    backgroundColor: '$--base---card',
+    borderRadius: '6px 44px',
+
+    padding: '2.5rem',
+    display: 'flex',
+    flexDirection: 'column',
+
+    ul: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '3rem',
+
+        li:{
+            listStyle: 'none'
+        }
+    }
+    
 })
