@@ -5,6 +5,12 @@ export const DivCheckoutContainer = styled('div', {
     maxWidth: 1120,
     padding: '0 1.5rem',
     margin: '0 auto',
+
+    //display: 'grid',
+    //gridTemplateColumns: '1.5fr 0.5fr'
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '1rem'
 })
 
 export const DivCheckoutSeuPedidoContainer = styled('div', {
@@ -17,7 +23,7 @@ export const DivCheckoutSeuPedidoContainer = styled('div', {
 
 export const DivCheckoutSeuPedido = styled('div', {
     backgroundColor: '$--base---card',
-    width: '40rem',
+    width: '37rem',
     height: '23.25rem',
     borderRadius: 6,
     
@@ -57,7 +63,7 @@ export const DivPagamento = styled ('div', {
     marginTop: '1rem',
     backgroundColor: '$--base---card',
     height: '13rem',
-    width: '40rem',
+    width: '37rem',
 
     borderRadius: 6,
     
@@ -87,7 +93,7 @@ export const ButtonDiv = styled('button', {
     marginTop: '2rem',
     borderRadius: 6,
     backgroundColor: '$--base---button',
-    width: '11rem',
+    width: '10.1rem',
     height: '3rem',
     display: 'flex',
     alignItems: 'center',
@@ -96,7 +102,8 @@ export const ButtonDiv = styled('button', {
     gap: '0.4rem',
 
     borderStyle: 'none',
-    fontSize: 14,
+    fontSize: 13,
+    color: '$--base---subtitle',
 
     '&:focus': {
         backgroundColor: '$--brand---purple--light',
@@ -109,14 +116,21 @@ export const ButtonDiv = styled('button', {
     },
 })
 
+export const DivCheckoutCarrinhoContainer = styled('div', {
+    h2: {
+        marginTop: '1.5rem',
+        marginBottom: '1rem'
+    }
+})
+
 export const DivCheckoutCarrinho = styled('div', {
     width: 'fit-content',
-    height: '31rem',
+    height: 'fit-content',
 
     backgroundColor: '$--base---card',
     borderRadius: '6px 44px',
 
-    padding: '2.5rem',
+    padding: '2rem',
     display: 'flex',
     flexDirection: 'column',
 
@@ -130,4 +144,14 @@ export const DivCheckoutCarrinho = styled('div', {
         }
     }
     
+})
+
+export const CheckoutTotals = styled('div', {
+    marginTop: '2rem',
+
+    div: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        lineHeight: '2rem'
+    }
 })
