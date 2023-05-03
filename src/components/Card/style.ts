@@ -11,6 +11,10 @@ export const CardStyled = styled('div', {
     display: 'flex',
     flexDirection: 'column',
     alignItems:'center',
+
+    img: {
+        marginTop: '-1.5rem'
+    }
 })
 
 export const DivType =styled('div', {
@@ -32,7 +36,7 @@ export const DivDescription = styled('div', {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    marginBottom: '1rem',
+    marginBottom: '1.7rem',
 
     span: {
         fontWeight: 700,
