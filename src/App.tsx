@@ -1,7 +1,6 @@
-import Carrinho from "./components/Carrinho";
 import Header from "./components/Header";
-import Homehero from './components/Homehero'
-import Checkout from "./pages/Checkout";
+import Homehero from "./pages/Homehero";
+
 
 export default function App() {
 

@@ -76,3 +76,21 @@ export const EUNAOAGUENTOMAISDIV =styled('div', {
         backgroundColor: '$--brand---purple'
     },
 })
+
+export const DivCafeContainer = styled('div', {
+    width: '100%',
+    maxWidth: 1120,
+    padding: '0 1.5rem',
+    margin: '6rem auto 3rem',
+
+    h1: {
+        fontFamily: 'Baloo2'
+    }
+})
+
+export const DivCafeContainerWrap = styled('div', {
+    marginTop: '3rem',
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '2.2rem',
+})
