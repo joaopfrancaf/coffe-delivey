@@ -57,6 +57,18 @@ export const InputStyled = styled('input', {
     backgroundColor: '$--base---input',
     border: '1px solid #E6E5E5',
     borderRadius: 4,
+
+    '&.inputrua': {
+        width: '100%'
+    },
+
+    '&.inputcomplemento': {
+        width: '60.9%'
+    },
+
+    '&.inputcidade': {
+        width: '46.4%'
+    }
 })
 
 export const DivPagamento = styled ('div', {
@@ -152,6 +164,28 @@ export const CheckoutTotals = styled('div', {
     div: {
         display: 'flex',
         justifyContent: 'space-between',
-        lineHeight: '2rem'
+        lineHeight: '2rem',
+
+        '&.total': {
+            fontSize: '1.3rem',
+            fontWeight: '700'
+        }
+    },
+})
+
+export const FinishButton = styled('button', {
+    marginTop: '1.3rem',
+    height: '3.1rem',
+
+    backgroundColor: '$--brand-----yellow',
+    borderRadius: 6,
+    borderStyle: 'none',
+    color: '$--base---white',
+    fontSize: '1rem',
+    cursor: 'pointer',
+
+    '&:hover': {
+        backgroundColor: '$--brand-----yellow--dark'
     }
+
 })

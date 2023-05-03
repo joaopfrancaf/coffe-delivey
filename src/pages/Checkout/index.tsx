@@ -1,5 +1,5 @@
 import Carrinho from "../../components/Carrinho";
-import { ButtonDiv, ButtonWrapp, CheckoutTotals, DivCheckoutCarrinho, DivCheckoutCarrinhoContainer, DivCheckoutContainer, DivCheckoutSeuPedido, DivCheckoutSeuPedidoContainer, DivCheckoutSeuPedidoEndereco, DivDescricao, DivForm, DivPagamento, InputStyled } from "./style";
+import { ButtonDiv, ButtonWrapp, CheckoutTotals, DivCheckoutCarrinho, DivCheckoutCarrinhoContainer, DivCheckoutContainer, DivCheckoutSeuPedido, DivCheckoutSeuPedidoContainer, DivCheckoutSeuPedidoEndereco, DivDescricao, DivForm, DivPagamento, FinishButton, InputStyled } from "./style";
 import { MapPin, CurrencyDollar, CreditCard, Bank, Money } from "@phosphor-icons/react";
 
 export default function Checkout() {
@@ -19,12 +19,12 @@ export default function Checkout() {
                         </DivCheckoutSeuPedidoEndereco>
 
                         <DivForm>
-                            <InputStyled placeholder="CEP" />
-                            <InputStyled placeholder="Rua" size={68} />
-                            <InputStyled placeholder="Número" size={15} />
-                            <InputStyled placeholder="Complemento" size={44} />
-                            <InputStyled placeholder="Bairro" size={15} />
-                            <InputStyled placeholder="Cidade" size={33} />
+                            <InputStyled placeholder="CEP"  />
+                            <InputStyled placeholder="Rua"  id="rua" className="inputrua"/>
+                            <InputStyled placeholder="Número"/>
+                            <InputStyled placeholder="Complemento"  className="inputcomplemento"/>
+                            <InputStyled placeholder="Bairro"  />
+                            <InputStyled placeholder="Cidade"  className="inputcidade" />
                             <InputStyled placeholder="UF" size={2} />
                         </DivForm>
                     </DivCheckoutSeuPedido>
@@ -57,8 +57,10 @@ export default function Checkout() {
                     <CheckoutTotals>
                         <div><span>Total de itens</span><span>R$ 29,70</span></div>
                         <div><span>Entrega</span><span>R$ 3,50</span></div>
-                        <div><span>Total</span><span>R$ 33,20</span></div>
+                        <div className="total"><span>Total</span><span>R$ 33,20</span></div>
                     </CheckoutTotals>
+                    <FinishButton>CONFIRMAR PEDIDO</FinishButton>
+
                 </DivCheckoutCarrinho>
             </DivCheckoutCarrinhoContainer>
 
