@@ -18,6 +18,9 @@ export const globaStyles = globalCss ({
         fontFamily: 'roboto',
         fontWeight: 400,
     },
-
     
+    '@font-face': {
+        fontFamily: 'Baloo2',
+        src: 'url("https://fonts.gstatic.com/s/baloo2/v16/wXKrE3kTposypRyd51jcAA.woff2")',
+    },
 })

@@ -21,7 +21,13 @@ export const DivHeaderH1Styled = styled('div', {
     paddingBottom: '2rem',
     width: '30rem',
     fontSize: '1.3rem',
-    color: '$--base---title'
+    color: '$--base---title',
+
+    h1: {
+        fontFamily: 'Baloo2', //esse css-in-js não aceita nomes separados (tipo: Baloo 2) entao tive que fazer coisas para alterar o nome para Baloo2 (olhar @font-face em global)
+        fontWeight: '700',
+        lineHeight: '3.2rem'
+    }
 })
 
 export const DivHeaderPStyled = styled('div', {
@@ -40,7 +46,7 @@ export const DivHeaderFeatureStyled = styled('div', {
     div: {
         display: 'flex',
         alignItems: 'center',
-        gap: '1rem',
+        gap: '0.5rem',
         lineHeight: '2rem'
     }
 })
