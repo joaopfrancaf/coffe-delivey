@@ -2,19 +2,20 @@ import { CardStyled, CarrinhoAdd, CheckoutDiv, DivDescription, DivType } from ".
 import img from '../../assets/Image-12.png'
 import { DivButtonChange, DivMorebuttons } from "../Carrinho/style";
 import { Minus, Plus, ShoppingCart } from "@phosphor-icons/react";
+import { Coffe } from "../../context/checkout";
 
-export default function Card() {
+export default function Card({...Props}: Coffe) {
     return (
         <CardStyled>
-            <img src={img} width={120} height={120}/>
+            <img src={Props.img} width={120} height={120}/>
             <DivType><span>TRADICIONAL</span><span>ALCOÓLICO</span><span>GELADO</span></DivType>
             <DivDescription>
-                <span>Expresso Tradicional</span>
-                <p>O tradicional café feito com água quente e grãos moídos</p>
+                <span>{Props.name}</span>
+                <p>{Props.description}</p>
             </DivDescription>
 
             <CheckoutDiv>
-                <span className="money">9,90</span>
+                <span className="money">{Props.price}</span>
 
                 <DivMorebuttons>
                     <DivButtonChange><Minus color='#8047F8' /></DivButtonChange>

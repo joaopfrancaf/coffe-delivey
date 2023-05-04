@@ -2,8 +2,12 @@ import { DivCafeContainer, DivCafeContainerWrap, DivHeaderFeatureStyled, DivHead
 import Imgcafe from '../../assets/Imagemcafe.png'
 import { ShoppingCart, Package, Timer, Coffee } from '@phosphor-icons/react'
 import Card from "../../components/Card";
+import { useContext } from "react";
+import { CheckoutContext } from "../../context/checkout";
 
 export default function Homehero() {
+    const { coffes } = useContext(CheckoutContext)
+
     return (
         <>
             <DivHeaderStyled>
@@ -30,10 +34,9 @@ export default function Homehero() {
                 <h1>Nossos cafés</h1>
 
                 <DivCafeContainerWrap>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
+                    {coffes?.map((coffe) => 
+                        <Card key={coffe.id} id={coffe.id} name={coffe.name} type={coffe.type} description={coffe.description} price={coffe.price}  img={coffe.img}/>
+                    )}
                 </DivCafeContainerWrap>
             </DivCafeContainer>
         </>
