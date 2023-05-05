@@ -4,7 +4,7 @@ import { ReactNode, createContext, useEffect, useState } from "react"
 export interface Coffe {
     id: number,
     name: string,
-    type: 'TRADICIONAL' | 'GELADO' | 'COM LEITE' | 'ALCOÓLICO' | 'ESPECIAL',
+    type: [],
     description: string,
     price: number,
     img: string

@@ -75,7 +75,7 @@
         "id": "10",
         "name": "Chocolate Quente",
         "description": "Bebida feita com chocolate dissolvido no leite quente e café",
-        "type": ["TRADICIONAL", "COM LEITE"],
+        "type": ["ESPECIAL", "COM LEITE"],
         "price": 9.90,
         "img": "src/assets/Image-9.png"
     },
@@ -83,7 +83,7 @@
         "id": "11",
         "name": "Cubano",
         "description": "Drink gelado de café expresso com rum, creme de leite e hortelã",
-        "type": ["TRADICIONAL", "COM LEITE"],
+        "type": ["ESPECIAL", "ALCOOLICO", "GELADO"],
         "price": 9.90,
         "img": "src/assets/Image-10.png"
     },

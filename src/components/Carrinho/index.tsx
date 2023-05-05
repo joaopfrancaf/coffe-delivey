@@ -1,15 +1,22 @@
 import { ButtonWraper, DivButtonChange, DivCarrinhoItem, DivDescricao, DivMorebuttons, DivRemoveButton, DivTitulo } from "./style";
 import { Minus, Plus, Trash } from '@phosphor-icons/react'
-import img from '../../assets/Image-2.png'
+import { Checkout, CheckoutContext } from "../../context/checkoutContext";
+import { useContext } from "react";
 
-export default function Carrinho() {
+export default function Carrinho({ ...Props }: Checkout) {
+    const { checkout } = useContext(CheckoutContext)
+
+    const amount = checkout.reduce((acumulador, valorAtual) => {
+        return acumulador.amount + valorAtual.amount
+    })
+
     return (
         <DivCarrinhoItem>
-            <img src={img} width={64} />
+            <img src={Props.product.img} width={64} />
             <DivDescricao >
                 <DivTitulo>
-                    <p>Expresso Tradicional</p>
-                    <span>R$ 9,90</span>
+                    <p>{Props.product.name}</p>
+                    <span>{Props.product.price}</span>
                 </DivTitulo>
                 <ButtonWraper>
                     <DivMorebuttons>

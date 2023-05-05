@@ -1,8 +1,12 @@
+import { useContext } from "react";
 import Carrinho from "../../components/Carrinho";
 import { ButtonDiv, ButtonWrapp, CheckoutTotals, DivCheckoutCarrinho, DivCheckoutCarrinhoContainer, DivCheckoutContainer, DivCheckoutSeuPedido, DivCheckoutSeuPedidoContainer, DivCheckoutSeuPedidoEndereco, DivDescricao, DivForm, DivPagamento, FinishButton, InputStyled } from "./style";
 import { MapPin, CurrencyDollar, CreditCard, Bank, Money } from "@phosphor-icons/react";
+import { CheckoutContext } from "../../context/checkoutContext";
 
 export default function Checkout() {
+    const { checkout } = useContext(CheckoutContext)
+
     return (
         <DivCheckoutContainer>
             <div>
@@ -51,9 +55,15 @@ export default function Checkout() {
                 <h2>Cafés selecionados</h2>
                 <DivCheckoutCarrinho>
                     <ul>
-                        <li><Carrinho /></li>
-                        <div className="divspace"></div>
-                        <li><Carrinho /></li>
+                        {checkout?.map(x => {
+                            return (
+                                <>
+                                    <li><Carrinho product={x.product} amount={x.amount} /></li>
+                                    <div className="divspace"></div>
+                                </>
+                            )
+                        })}
+                        {/*<li><Carrinho /></li>*/}
                         <div className="divspace"></div>
                     </ul>
                     <CheckoutTotals>
