@@ -3,10 +3,10 @@ import Imgcafe from '../../assets/Imagemcafe.png'
 import { ShoppingCart, Package, Timer, Coffee } from '@phosphor-icons/react'
 import Card from "../../components/Card";
 import { useContext } from "react";
-import { CheckoutContext } from "../../context/checkout";
+import { CoffeContext } from "../../context/coffeContext";
 
 export default function Homehero() {
-    const { coffes } = useContext(CheckoutContext)
+    const { coffes } = useContext(CoffeContext)
 
     return (
         <>
@@ -20,10 +20,10 @@ export default function Homehero() {
                     </DivHeaderPStyled>
 
                     <DivHeaderFeatureStyled>
-                        <div><EUNAOAGUENTOMAISDIV className="ShoppingCart"><ShoppingCart fill="white" weight="fill"/></EUNAOAGUENTOMAISDIV><span>Compra simples e segura</span></div>
-                        <div><EUNAOAGUENTOMAISDIV className="Package"><Package  fill="white" weight="fill"/></EUNAOAGUENTOMAISDIV><span>Embalagem mantém o café intacto</span></div>
-                        <div><EUNAOAGUENTOMAISDIV className="Timer" ><Timer fill="white" weight="fill"/></EUNAOAGUENTOMAISDIV><span>Entrega rápida e rastreada</span></div>
-                        <div><EUNAOAGUENTOMAISDIV className="Coffee"><Coffee fill="white" weight="fill"/></EUNAOAGUENTOMAISDIV><span>O café chega fresquinho até você</span></div>
+                        <div><EUNAOAGUENTOMAISDIV className="ShoppingCart"><ShoppingCart fill="white" weight="fill" /></EUNAOAGUENTOMAISDIV><span>Compra simples e segura</span></div>
+                        <div><EUNAOAGUENTOMAISDIV className="Package"><Package fill="white" weight="fill" /></EUNAOAGUENTOMAISDIV><span>Embalagem mantém o café intacto</span></div>
+                        <div><EUNAOAGUENTOMAISDIV className="Timer" ><Timer fill="white" weight="fill" /></EUNAOAGUENTOMAISDIV><span>Entrega rápida e rastreada</span></div>
+                        <div><EUNAOAGUENTOMAISDIV className="Coffee"><Coffee fill="white" weight="fill" /></EUNAOAGUENTOMAISDIV><span>O café chega fresquinho até você</span></div>
                     </DivHeaderFeatureStyled>
                 </DivHeaderTextStyled>
 
@@ -34,8 +34,8 @@ export default function Homehero() {
                 <h1>Nossos cafés</h1>
 
                 <DivCafeContainerWrap>
-                    {coffes?.map((coffe) => 
-                        <Card key={coffe.id} id={coffe.id} name={coffe.name} type={coffe.type} description={coffe.description} price={coffe.price}  img={coffe.img}/>
+                    {coffes?.map(coffe =>
+                        <Card key={coffe.id} id={coffe.id} name={coffe.name} type={coffe.type} description={coffe.description} price={coffe.price} img={coffe.img} />
                     )}
                 </DivCafeContainerWrap>
             </DivCafeContainer>

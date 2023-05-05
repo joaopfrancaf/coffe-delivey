@@ -6,9 +6,9 @@ import data from './data.json'
 
 createServer({
   routes() {
-    this.get("http://localhost:5173/api/coffe", () => ({
-      return: data
-    }))
+    this.get("api/coffe", () => {
+      return data
+    })
   },
 })
 

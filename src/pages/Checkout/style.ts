@@ -149,10 +149,18 @@ export const DivCheckoutCarrinho = styled('div', {
     ul: {
         display: 'flex',
         flexDirection: 'column',
-        gap: '3rem',
+        gap: '2rem',
+
+        div: {
+
+            '&.divspace': {
+                borderBottom:"solid 1px #d3d3d3"
+            },
+
+        },
 
         li:{
-            listStyle: 'none'
+            listStyle: 'none',
         }
     }
     

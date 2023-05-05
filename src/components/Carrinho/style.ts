@@ -6,7 +6,7 @@ export const DivCarrinhoItem = styled("div", {
 
     backgroundColor: '$--base---card',
 
-    padding: 8,
+    padding: 11,
     display: 'flex',
     gap: '1rem',
 

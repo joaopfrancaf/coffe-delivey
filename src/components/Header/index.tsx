@@ -11,7 +11,7 @@ export default function Header() {
 
             <DivStyledNav>
                 <DivLocal><MapPin weight="fill" color="#8047F8" size={20} /> Porto Alegre, RS</DivLocal>
-                <DivCashOut><Link to='checkout'><ShoppingCart weight="fill" color="#C47F17" size={20} /></Link></DivCashOut>
+                <Link to='checkout'><DivCashOut><ShoppingCart weight="fill" color="#C47F17" size={20} /></DivCashOut></Link>
             </DivStyledNav>
         </HeaderDiv>
     )

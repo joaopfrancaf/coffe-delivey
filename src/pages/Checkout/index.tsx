@@ -19,12 +19,12 @@ export default function Checkout() {
                         </DivCheckoutSeuPedidoEndereco>
 
                         <DivForm>
-                            <InputStyled placeholder="CEP"  />
-                            <InputStyled placeholder="Rua"  id="rua" className="inputrua"/>
-                            <InputStyled placeholder="Número"/>
-                            <InputStyled placeholder="Complemento"  className="inputcomplemento"/>
-                            <InputStyled placeholder="Bairro"  />
-                            <InputStyled placeholder="Cidade"  className="inputcidade" />
+                            <InputStyled placeholder="CEP" />
+                            <InputStyled placeholder="Rua" id="rua" className="inputrua" />
+                            <InputStyled placeholder="Número" />
+                            <InputStyled placeholder="Complemento" className="inputcomplemento" />
+                            <InputStyled placeholder="Bairro" />
+                            <InputStyled placeholder="Cidade" className="inputcidade" />
                             <InputStyled placeholder="UF" size={2} />
                         </DivForm>
                     </DivCheckoutSeuPedido>
@@ -52,7 +52,9 @@ export default function Checkout() {
                 <DivCheckoutCarrinho>
                     <ul>
                         <li><Carrinho /></li>
+                        <div className="divspace"></div>
                         <li><Carrinho /></li>
+                        <div className="divspace"></div>
                     </ul>
                     <CheckoutTotals>
                         <div><span>Total de itens</span><span>R$ 29,70</span></div>
