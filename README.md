@@ -1,2 +1,2 @@
 # coffe-delivey
-exerciocio ReactJS para desktop
+exercicio ReactJS para desktop
