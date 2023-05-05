@@ -58,13 +58,11 @@ export default function Checkout() {
                         {checkout?.map(x => {
                             return (
                                 <>
-                                    <li><Carrinho product={x.product} amount={x.amount} /></li>
+                                    <li><Carrinho product={x.product}/></li>
                                     <div className="divspace"></div>
                                 </>
                             )
                         })}
-                        {/*<li><Carrinho /></li>*/}
-                        <div className="divspace"></div>
                     </ul>
                     <CheckoutTotals>
                         <div><span>Total de itens</span><span>R$ 29,70</span></div>
