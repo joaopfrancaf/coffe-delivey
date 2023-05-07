@@ -6,10 +6,6 @@ import { useContext } from "react";
 export default function Carrinho({ ...Props }: Checkout) {
     const { checkout } = useContext(CheckoutContext)
 
-    const amount = checkout.reduce((acumulador, valorAtual) => {
-        return acumulador.amount + valorAtual.amount
-    })
-
     return (
         <DivCarrinhoItem>
             <img src={Props.product.img} width={64} />

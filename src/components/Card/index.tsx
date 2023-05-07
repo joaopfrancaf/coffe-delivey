@@ -3,7 +3,7 @@ import { DivButtonChange, DivMorebuttons } from "../Carrinho/style";
 import { Minus, Plus, ShoppingCart } from "@phosphor-icons/react";
 import { Coffe } from "../../context/coffeContext";
 import { useContext, useState } from "react";
-import { Checkout, CheckoutContext } from "../../context/checkoutContext";
+import { CheckoutContext } from "../../context/checkoutContext";
 
 export default function Card({ ...Props }: Coffe) {
     const [amount, setAmount] = useState<number>(0)

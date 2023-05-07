@@ -58,7 +58,7 @@ export default function Checkout() {
                         {checkout?.map(x => {
                             return (
                                 <>
-                                    <li><Carrinho product={x.product}/></li>
+                                    <li><Carrinho key={x.product.id} product={x.product} /></li>
                                     <div className="divspace"></div>
                                 </>
                             )
