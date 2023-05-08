@@ -5,6 +5,19 @@ import { useContext } from "react";
 
 export default function Carrinho({ ...Props }: Checkout) {
     const { checkout } = useContext(CheckoutContext)
+    const { SetCheckoutAdd, SetCheckoutRemove } = useContext(CheckoutContext)
+
+    function Add() {
+        SetCheckoutAdd({
+            product: Props.product,
+        })
+    }
+
+    function Remove() {
+        SetCheckoutRemove({
+            product: Props.product,
+        })
+    }
 
     return (
         <DivCarrinhoItem>
@@ -16,9 +29,9 @@ export default function Carrinho({ ...Props }: Checkout) {
                 </DivTitulo>
                 <ButtonWraper>
                     <DivMorebuttons>
-                        <DivButtonChange><Minus color='#8047F8' /></DivButtonChange>
+                        <DivButtonChange onClick={Remove}><Minus color='#8047F8' /></DivButtonChange>
                         <span>0</span>
-                        <DivButtonChange><Plus color='#8047F8' /></DivButtonChange>
+                        <DivButtonChange onClick={Add}><Plus color='#8047F8' /></DivButtonChange>
                     </DivMorebuttons>
 
                     <DivRemoveButton><Trash color='#8047F8' />REMOVER</DivRemoveButton>
