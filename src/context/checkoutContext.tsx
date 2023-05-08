@@ -10,6 +10,7 @@ interface CheckoutContext {
     //setCheckout: React.Dispatch<React.SetStateAction<Checkout[]>> pode fazer dessa maneira ou a de baixo (fazendo um metodo para passar)
     SetCheckoutAdd: (checkout: Checkout) => void
     SetCheckoutRemove: (checkout: Checkout) => void
+    CalcAmount: () => Checkout[]
 }
 
 interface CheckoutContextProviderProps {
@@ -40,8 +41,16 @@ export default function CheckoutContextProvider({ children }: CheckoutContextPro
         setCheckout(newArr)
     }
 
+    function CalcAmount(): Checkout[] {
+        const produtosUnicos = checkout.filter((produto, index) => {
+            return index === checkout.findIndex(p => p.product.id === produto.product.id);
+        });
+
+        return produtosUnicos
+    }
+
     return (
-        <CheckoutContext.Provider value={{ checkout, SetCheckoutAdd, SetCheckoutRemove }}>{/*elentos que vao aqui tem que estar na interface CheckoutContext em cima (linha 9) */}
+        <CheckoutContext.Provider value={{ checkout, SetCheckoutAdd, SetCheckoutRemove, CalcAmount }}>{/*elentos que vao aqui tem que estar na interface CheckoutContext em cima (linha 9) */}
             {children}
         </CheckoutContext.Provider>
     )

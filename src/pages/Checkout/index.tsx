@@ -5,7 +5,19 @@ import { MapPin, CurrencyDollar, CreditCard, Bank, Money } from "@phosphor-icons
 import { CheckoutContext } from "../../context/checkoutContext";
 
 export default function Checkout() {
-    const { checkout } = useContext(CheckoutContext)
+    const { checkout, CalcAmount } = useContext(CheckoutContext)
+
+    function CalcTotalPreco() {
+        const x = checkout.reduce((acc, currentValue) => {
+            return acc + currentValue.product.price;
+        }, 0);
+
+        return x
+    }
+
+    const totalProdutosPreco = CalcTotalPreco()
+
+    const totalDeProdutos = CalcAmount()
 
     return (
         <DivCheckoutContainer>
@@ -55,7 +67,7 @@ export default function Checkout() {
                 <h2>Cafés selecionados</h2>
                 <DivCheckoutCarrinho>
                     <ul>
-                        {checkout?.map(x => {
+                        {totalDeProdutos?.map(x => {
                             return (
                                 <>
                                     <li><Carrinho key={x.product.id} product={x.product} /></li>
@@ -65,9 +77,9 @@ export default function Checkout() {
                         })}
                     </ul>
                     <CheckoutTotals>
-                        <div><span>Total de itens</span><span>R$ 29,70</span></div>
+                        <div><span>Total de itens</span><span>R$ {totalProdutosPreco}</span></div>
                         <div><span>Entrega</span><span>R$ 3,50</span></div>
-                        <div className="total"><span>Total</span><span>R$ 33,20</span></div>
+                        <div className="total"><span>Total</span><span>R$ {totalProdutosPreco + 3.50}</span></div>
                     </CheckoutTotals>
                     <FinishButton>CONFIRMAR PEDIDO</FinishButton>
 

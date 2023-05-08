@@ -4,7 +4,7 @@ import { Checkout, CheckoutContext } from "../../context/checkoutContext";
 import { useContext } from "react";
 
 export default function Carrinho({ ...Props }: Checkout) {
-    const { checkout } = useContext(CheckoutContext)
+    const { CalcAmount } = useContext(CheckoutContext)
     const { SetCheckoutAdd, SetCheckoutRemove } = useContext(CheckoutContext)
 
     function Add() {
