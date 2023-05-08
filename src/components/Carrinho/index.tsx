@@ -4,20 +4,21 @@ import { Checkout, CheckoutContext } from "../../context/checkoutContext";
 import { useContext } from "react";
 
 export default function Carrinho({ ...Props }: Checkout) {
-    const { CalcAmount } = useContext(CheckoutContext)
-    const { SetCheckoutAdd, SetCheckoutRemove } = useContext(CheckoutContext)
+    const { SetCheckoutAdd, SetCheckoutRemove, CalcQuantidadeProdutos } = useContext(CheckoutContext)
 
     function Add() {
         SetCheckoutAdd({
-            product: Props.product,
+            product: Props.product
         })
     }
 
     function Remove() {
         SetCheckoutRemove({
-            product: Props.product,
+            product: Props.product
         })
     }
+
+    const quantidadeAmount = CalcQuantidadeProdutos(Props)
 
     return (
         <DivCarrinhoItem>
@@ -30,7 +31,7 @@ export default function Carrinho({ ...Props }: Checkout) {
                 <ButtonWraper>
                     <DivMorebuttons>
                         <DivButtonChange onClick={Remove}><Minus color='#8047F8' /></DivButtonChange>
-                        <span>0</span>
+                        <span>{quantidadeAmount}</span>
                         <DivButtonChange onClick={Add}><Plus color='#8047F8' /></DivButtonChange>
                     </DivMorebuttons>
 
