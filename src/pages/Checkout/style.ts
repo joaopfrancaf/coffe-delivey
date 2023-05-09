@@ -1,3 +1,4 @@
+import * as RadioGroup from '@radix-ui/react-radio-group';
 import { styled } from "../../styles/stitches.config";
 
 export const DivCheckoutContainer = styled('div', {
@@ -96,12 +97,12 @@ export const DivDescricao = styled ('div', {
     }
 })
 
-export const ButtonWrapp = styled ('div', {
-    display: 'flex',
-    justifyContent: 'space-between',
-})
+export const ButtonWrapp = styled(RadioGroup.Root, {
+  display: "flex",
+  justifyContent: "space-between",
+});
 
-export const ButtonDiv = styled('button', {
+export const ButtonDiv = styled(RadioGroup.Item, {
     marginTop: '2rem',
     borderRadius: 6,
     backgroundColor: '$--base---button',
@@ -117,7 +118,7 @@ export const ButtonDiv = styled('button', {
     fontSize: 13,
     color: '$--base---subtitle',
 
-    '&:focus': {
+    '&[data-state=checked]': {//aqui pega o estado de checkado no item do radio-grup e aplica o css
         backgroundColor: '$--brand---purple--light',
         border: '1px solid #8047F8',
         borderRadius: 6,

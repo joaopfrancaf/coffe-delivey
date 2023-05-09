@@ -5,6 +5,7 @@ import { Coffe } from "../../context/coffeContext";
 import { useContext } from "react";
 import { CheckoutContext } from "../../context/checkoutContext";
 import { Link } from "react-router-dom";
+import { priceFormatter } from "../../utils/formatter";
 
 export default function Card({ ...Props }: Coffe) {
     const { SetCheckoutAdd, SetCheckoutRemove, QuantidadeDeCafes } = useContext(CheckoutContext)
@@ -33,7 +34,7 @@ export default function Card({ ...Props }: Coffe) {
             </DivDescription>
 
             <CheckoutDiv>
-                <span className="money">{Props.price}</span>
+                <span className="money">{priceFormatter.format(Props.price)}</span>
 
                 <DivMorebuttons>{/*n sei se esse disabled abaixo é o "ideal"*/}
                     <DivButtonChange onClick={Remove} ><Minus color='#8047F8' /></DivButtonChange>
