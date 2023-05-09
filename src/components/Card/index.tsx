@@ -1,8 +1,8 @@
 import { CardStyled, CarrinhoAdd, CheckoutDiv, DivDescription, DivType } from "./style";
 import { DivButtonChange, DivMorebuttons } from "../Carrinho/style";
 import { Minus, Plus, ShoppingCart } from "@phosphor-icons/react";
-import { Coffe, CoffeContext } from "../../context/coffeContext";
-import { useContext, useState } from "react";
+import { Coffe } from "../../context/coffeContext";
+import { useContext } from "react";
 import { CheckoutContext } from "../../context/checkoutContext";
 import { Link } from "react-router-dom";
 

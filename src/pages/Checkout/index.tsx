@@ -5,7 +5,7 @@ import { MapPin, CurrencyDollar, CreditCard, Bank, Money } from "@phosphor-icons
 import { CheckoutContext } from "../../context/checkoutContext";
 
 export default function Checkout() {
-    const { checkout, CalcAmount } = useContext(CheckoutContext)
+    const { checkout, CheckoutReducerProducts } = useContext(CheckoutContext)
 
     function CalcTotalPreco() {
         const x = checkout.reduce((acc, currentValue) => {
@@ -17,7 +17,7 @@ export default function Checkout() {
 
     const totalProdutosPreco = CalcTotalPreco()
 
-    const totalDeProdutos = CalcAmount()
+    const totalDeProdutos = CheckoutReducerProducts()
 
     return (
         <DivCheckoutContainer>

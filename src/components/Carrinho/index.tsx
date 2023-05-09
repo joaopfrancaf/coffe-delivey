@@ -4,7 +4,7 @@ import { Checkout, CheckoutContext } from "../../context/checkoutContext";
 import { useContext } from "react";
 
 export default function Carrinho({ ...Props }: Checkout) {
-    const { SetCheckoutAdd, SetCheckoutRemove, CalcQuantidadeProdutos } = useContext(CheckoutContext)
+    const { SetCheckoutAdd, SetCheckoutRemove, QuantidadeProdutosNoCarrinho } = useContext(CheckoutContext)
 
     function Add() {
         SetCheckoutAdd({
@@ -18,7 +18,7 @@ export default function Carrinho({ ...Props }: Checkout) {
         })
     }
 
-    const quantidadeAmount = CalcQuantidadeProdutos(Props)
+    const quantidadeAmount = QuantidadeProdutosNoCarrinho(Props)
 
     return (
         <DivCarrinhoItem>
