@@ -7,7 +7,7 @@ import { CheckoutContext } from "../../context/checkoutContext";
 import { Link } from "react-router-dom";
 
 export default function Card({ ...Props }: Coffe) {
-    const { SetCheckoutAdd, SetCheckoutRemove } = useContext(CheckoutContext)
+    const { SetCheckoutAdd, SetCheckoutRemove, QuantidadeDeCafes } = useContext(CheckoutContext)
 
     function Add() {
         SetCheckoutAdd({
@@ -20,6 +20,8 @@ export default function Card({ ...Props }: Coffe) {
             product: Props
         })
     }
+
+    const amount = QuantidadeDeCafes(Props)
 
     return (
         <CardStyled>
@@ -35,7 +37,7 @@ export default function Card({ ...Props }: Coffe) {
 
                 <DivMorebuttons>{/*n sei se esse disabled abaixo é o "ideal"*/}
                     <DivButtonChange onClick={Remove} ><Minus color='#8047F8' /></DivButtonChange>
-                    <span>{ }</span>
+                    <span>{amount}</span>
                     <DivButtonChange onClick={Add}><Plus color='#8047F8' /></DivButtonChange>
                 </DivMorebuttons>
 

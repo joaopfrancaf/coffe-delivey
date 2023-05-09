@@ -12,6 +12,7 @@ interface CheckoutContext {
     SetCheckoutRemove: (checkout: Checkout) => void
     CalcAmount: () => Checkout[]
     CalcQuantidadeProdutos: (obj: Checkout) => number
+    QuantidadeDeCafes: (obj: Coffe) => number
 }
 
 interface CheckoutContextProviderProps {
@@ -53,8 +54,19 @@ export default function CheckoutContextProvider({ children }: CheckoutContextPro
         return occurrences
     }
 
+    function QuantidadeDeCafes(obj: Coffe) {
+        const occurrences = checkout.reduce((acc, curret) => {
+            if (curret.product.id === obj.id) {
+                acc++
+            }
+            return acc
+        }, 0);
+
+        return occurrences
+    }
+
     return (
-        <CheckoutContext.Provider value={{ checkout, SetCheckoutAdd, SetCheckoutRemove, CalcAmount, CalcQuantidadeProdutos }}>{/*elentos que vao aqui tem que estar na interface CheckoutContext em cima (linha 9) */}
+        <CheckoutContext.Provider value={{ checkout, SetCheckoutAdd, SetCheckoutRemove, CalcAmount, CalcQuantidadeProdutos, QuantidadeDeCafes }}>{/*elentos que vao aqui tem que estar na interface CheckoutContext em cima (linha 9) */}
             {children}
         </CheckoutContext.Provider>
     )
