@@ -1,5 +1,6 @@
 import { ReactNode, createContext, useState } from "react"
 import { Coffe } from "./coffeContext"
+import axios from 'axios'
 
 export interface Checkout {
     product: Coffe
@@ -13,10 +14,28 @@ interface CheckoutContext {
     CheckoutReducerProducts: () => Checkout[]
     QuantidadeProdutosNoCarrinho: (obj: Checkout) => number
     QuantidadeDeCafes: (obj: Coffe) => number
+    Submit: (data: any) => void
 }
 
 interface CheckoutContextProviderProps {
     children: ReactNode
+}
+
+/*enum Pagamentos {
+    CARTAO_DE_CREDITO = 'CARTAO_DE_CREDITO',
+    CARTAO_DE_DEBITO = "CARTAO_DE_DEBITO",
+    DINHEIRO = "DINHEIRO",
+}*/
+
+interface CheckoutSchematype {
+    CEP: number,
+    rua: string,
+    numero: number,
+    complemento: string,
+    bairro: string,
+    cidade: string,
+    uf: string,
+    pagamento: 'CARTAO_DE_CREDITO' | 'CARTAO_DE_DEBITO' | "DINHEIRO"
 }
 
 export const CheckoutContext = createContext({} as CheckoutContext)
@@ -65,8 +84,12 @@ export default function CheckoutContextProvider({ children }: CheckoutContextPro
         return occurrences
     }
 
+    async function Submit(data: CheckoutSchematype) {
+        const response = axios.put('http://localhost:5173/api/coffe', data) 
+    }
+
     return (
-        <CheckoutContext.Provider value={{ checkout, SetCheckoutAdd, SetCheckoutRemove, CheckoutReducerProducts, QuantidadeProdutosNoCarrinho, QuantidadeDeCafes }}>{/*elentos que vao aqui tem que estar na interface CheckoutContext em cima (linha 9) */}
+        <CheckoutContext.Provider value={{ checkout, SetCheckoutAdd, SetCheckoutRemove, CheckoutReducerProducts, QuantidadeProdutosNoCarrinho, QuantidadeDeCafes, Submit }}>{/*elentos que vao aqui tem que estar na interface CheckoutContext em cima (linha 9) */}
             {children}
         </CheckoutContext.Provider>
     )

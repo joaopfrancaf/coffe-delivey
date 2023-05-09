@@ -4,27 +4,26 @@ import { ButtonDiv, ButtonWrapp, CheckoutTotals, DivCheckoutCarrinho, DivCheckou
 import { MapPin, CurrencyDollar, CreditCard, Bank, Money } from "@phosphor-icons/react";
 import { CheckoutContext } from "../../context/checkoutContext";
 import { z } from "zod";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as RadioGroup from '@radix-ui/react-radio-group';
 import { priceFormatter } from "../../utils/formatter";
 
 const CheckoutSchema = z.object({
-    CEP: z.number().min(8).max(8),
+    CEP: z.number(),
     rua: z.string(),
     numero: z.number(),
     complemento: z.string(),
     bairro: z.string(),
     cidade: z.string(),
     uf: z.string(),
-    pagamento: z.string()
+    pagamento: z.enum(["CARTAO_DE_CREDITO","CARTAO_DE_DEBITO","DINHEIRO"] ,{ required_error: 'ERROR'})
 })
 
 type CheckoutSchematype = z.infer<typeof CheckoutSchema>
 
 export default function Checkout() {
-    const { checkout, CheckoutReducerProducts } = useContext(CheckoutContext)
-    const { register, handleSubmit } = useForm<CheckoutSchematype>({
+    const { checkout, CheckoutReducerProducts, Submit } = useContext(CheckoutContext)
+    const { register, handleSubmit, control, formState: {isSubmitting} } = useForm<CheckoutSchematype>({
         resolver: zodResolver(CheckoutSchema)
     })
 
@@ -34,10 +33,6 @@ export default function Checkout() {
         }, 0);
 
         return x
-    }
-
-    function Submit(data: CheckoutSchematype) {
-        ''
     }
 
     const totalProdutosPreco = CalcTotalPreco()
@@ -61,14 +56,14 @@ export default function Checkout() {
                             </div>
                         </DivCheckoutSeuPedidoEndereco>
 
-                        <DivForm onSubmit={handleSubmit(Submit)}>
-                            <InputStyled type="number" placeholder="CEP" {...register('CEP', { required: true, valueAsNumber: true })} />
-                            <InputStyled placeholder="Rua" id="rua" className="inputrua"{...register('rua', { required: true })} />
-                            <InputStyled type="number" placeholder="Número" {...register('numero', { required: true, valueAsNumber: true })} />
-                            <InputStyled placeholder="Complemento" className="inputcomplemento" {...register('complemento', { required: true })} />
-                            <InputStyled placeholder="Bairro" {...register('bairro', { required: true })} />
-                            <InputStyled placeholder="Cidade" className="inputcidade" {...register('cidade', { required: true })} />
-                            <InputStyled placeholder="UF" size={2} {...register('uf', { required: true })} />
+                        <DivForm id="my-form" onSubmit={handleSubmit(Submit)}>
+                            <InputStyled type="number" placeholder="CEP" required {...register('CEP', { required: true, valueAsNumber: true })} />
+                            <InputStyled placeholder="Rua" id="rua" required className="inputrua"{...register('rua', { required: true })} />
+                            <InputStyled type="number" placeholder="Número" required {...register('numero', { required: true, valueAsNumber: true })} />
+                            <InputStyled placeholder="Complemento" className="inputcomplemento" required {...register('complemento', { required: true })} />
+                            <InputStyled placeholder="Bairro" required {...register('bairro', { required: true })} />
+                            <InputStyled placeholder="Cidade" className="inputcidade" required {...register('cidade', { required: true })} />
+                            <InputStyled placeholder="UF" size={2} required {...register('uf', { required: true })} />
                         </DivForm>
                     </DivCheckoutSeuPedido>
                 </DivCheckoutSeuPedidoContainer>
@@ -82,11 +77,18 @@ export default function Checkout() {
                         </div>
                     </DivDescricao>
 
-                    <ButtonWrapp>
-                        <ButtonDiv id="CARTAO_DE_CREDITO" value="CARTAO DE CREDITO"><CreditCard color="#8047F8" />CARTÃO DE CREDITO</ButtonDiv>
-                        <ButtonDiv id="CARTAO_DE_DEBITO" value="CARTAO DE DEBITO"><Bank color="#8047F8" />CARTÃO DE DEBITO</ButtonDiv>
-                        <ButtonDiv id="DINHEIRO" value="DINHEIRO"><Money color="#8047F8" />DINHEIRO</ButtonDiv>
-                    </ButtonWrapp>
+                    <Controller
+                        control={control}
+                        name="pagamento" render={({field}) => {
+                            return (
+                                <ButtonWrapp id="my-form" onValueChange={field.onChange} value={field.value} required>
+                                    <ButtonDiv id="CARTAO_DE_CREDITO" value="CARTAO_DE_CREDITO"><CreditCard color="#8047F8" />CARTÃO DE CREDITO</ButtonDiv>
+                                    <ButtonDiv id="CARTAO_DE_DEBITO" value="CARTAO_DE_DEBITO"><Bank color="#8047F8" />CARTÃO DE DEBITO</ButtonDiv>
+                                    <ButtonDiv id="DINHEIRO" value="DINHEIRO"><Money color="#8047F8" />DINHEIRO</ButtonDiv>
+                                </ButtonWrapp>
+                            )
+                        }}
+                    />
                 </DivPagamento>
             </div>
 
@@ -108,7 +110,7 @@ export default function Checkout() {
                         <div><span>Entrega</span><span>R$ 3,50</span></div>
                         <div className="total"><span>Total</span><span>{priceFormatter.format(totalDeProdutosMaisEntrega)}</span></div>
                     </CheckoutTotals>
-                    <FinishButton type="submit">CONFIRMAR PEDIDO</FinishButton>
+                    <FinishButton type="submit" form="my-form" disabled={isSubmitting}>CONFIRMAR PEDIDO</FinishButton>
 
                 </DivCheckoutCarrinho>
             </DivCheckoutCarrinhoContainer>

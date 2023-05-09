@@ -9,6 +9,12 @@ createServer({
   routes() {
     this.get("api/coffe", () => {
       return data
+    }),
+
+    this.post("/api/coffe", (schema, request) => {
+      let attrs = JSON.parse(request.requestBody)
+      console.log(attrs)
+      debugger
     })
   },
 })
