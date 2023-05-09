@@ -31,7 +31,7 @@ export const DivContainerInfoeImg = styled('div', {
 })
 
 export const DivInformacoesContainer = styled('div', {
-    border: 'solid 1px rgba(128, 71, 248, 1)',
+    border: 'solid 1px $--brand---purple',
     borderRadius: "6px 36px",
 
     display: "flex",

@@ -19,8 +19,7 @@ export default function App() {
   return (
     <>
       <Header />
-      {/*<RoutesApp />*/}
-      <Success/>
+      <RoutesApp />
     </>
   )
 }
