@@ -62,11 +62,11 @@ export const CheckoutDiv = styled('div', {
             fontWeight: '700',
             marginRight: '1.5rem',
     
-            '&:before': {
+            /*'&:before': {
                 content: 'R$ ',
                 fontWeight: '400',
                 fontSize: 14
-            }
+            }*/
         }
     }
 })

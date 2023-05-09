@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import { createServer } from "miragejs"
 
 import data from './data.json'
+import Success from "./pages/Success";
 
 createServer({
   routes() {
@@ -18,7 +19,8 @@ export default function App() {
   return (
     <>
       <Header />
-      <RoutesApp />
+      {/*<RoutesApp />*/}
+      <Success/>
     </>
   )
 }
