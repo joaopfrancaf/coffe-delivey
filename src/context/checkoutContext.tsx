@@ -132,8 +132,6 @@ export default function CheckoutContextProvider({ children }: CheckoutContextPro
         }
     }
 
-    console.log("skipdop")
-
     return (
         <CheckoutContext.Provider value={{ checkout, SetCheckoutAdd, SetCheckoutRemove, CheckoutReducerProducts, QuantidadeProdutosNoCarrinho, QuantidadeDeCafes, Submit, apiResponsePedido, RemoveItem }}>{/*elentos que vao aqui tem que estar na interface CheckoutContext em cima (linha 9) */}
             {children}
