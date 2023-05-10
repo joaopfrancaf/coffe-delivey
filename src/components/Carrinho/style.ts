@@ -2,7 +2,7 @@ import { styled } from "../../styles/stitches.config";
 
 export const DivCarrinhoItem = styled("div", {
     width: '25rem',
-    height: '5rem',
+    height: '4.5rem',
 
     backgroundColor: '$--base---card',
 

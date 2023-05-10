@@ -98,18 +98,16 @@ export default function Checkout() {
                 <DivCheckoutCarrinhoContainer>
                     <h2>Cafés selecionados</h2>
                     <DivCheckoutCarrinho>
-                        <ul>
-                            {totalDeProdutos.length ? totalDeProdutos?.map(x => {
-                                return (
-                                    <>
-                                        <li><Carrinho key={x.product.id} product={x.product} /></li>
-                                        <div className="divspace"></div>
-                                    </>
-                                )
-                            }) :
-                                <EmptyCard />
-                            }
-                        </ul>
+                        {totalDeProdutos.length ? totalDeProdutos?.map(x => {
+                            return (
+                                <div key={x.product.id} className="LOL">
+                                    <li><Carrinho key={x.product.id} product={x.product} /></li>
+                                    <div className="divspace"></div>
+                                </div>
+                            )
+                        }) :
+                            <EmptyCard />
+                        }
                         <CheckoutTotals>
                             <div><span>Total de itens</span><span>{priceFormatter.format(totalProdutosPreco)}</span></div>
                             <div><span>Entrega</span><span>R$ 3,50</span></div>
