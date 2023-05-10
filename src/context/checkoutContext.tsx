@@ -9,12 +9,12 @@ export interface Checkout {
 
 export interface Pedido {
     carrinho: Checkout[]
-    endereco: CheckoutSchematype
+    endereco: Enderecotype
 }
 
 interface CheckoutContext {
     checkout: Checkout[]
-    apiResponse: Pedido[]
+    apiResponsePedido: Pedido
     //setCheckout: React.Dispatch<React.SetStateAction<Checkout[]>> pode fazer dessa maneira ou a de baixo (fazendo um metodo para passar)
     SetCheckoutAdd: (checkout: Checkout) => void
     SetCheckoutRemove: (checkout: Checkout) => void
@@ -29,7 +29,7 @@ interface CheckoutContextProviderProps {
     children: ReactNode
 }
 
-interface CheckoutSchematype {
+interface Enderecotype {
     CEP: number,
     rua: string,
     numero: number,
@@ -38,7 +38,6 @@ interface CheckoutSchematype {
     cidade: string,
     uf: string,
     pagamento: 'CARTAO_DE_CREDITO' | 'CARTAO_DE_DEBITO' | "DINHEIRO"
-    carrinho: Checkout
 }
 
 /*enum Pagamentos {
@@ -51,7 +50,19 @@ export const CheckoutContext = createContext({} as CheckoutContext)
 
 export default function CheckoutContextProvider({ children }: CheckoutContextProviderProps) {
     const [checkout, setCheckout] = useState<Checkout[]>([])
-    const [apiResponse, setApiResponse] = useState<Pedido[]>([])
+    const [apiResponsePedido, setApiResponsePedido] = useState<Pedido>({
+        carrinho: [],
+        endereco: {
+            bairro: "",
+            CEP: 0,
+            cidade: "",
+            complemento: "",
+            numero: 0,
+            pagamento: 'CARTAO_DE_CREDITO',
+            rua: "",
+            uf: ''
+        }
+    })
     const navigate = useNavigate();
 
     function SetCheckoutAdd(obj: Checkout) {
@@ -103,16 +114,16 @@ export default function CheckoutContextProvider({ children }: CheckoutContextPro
         setCheckout(newArray)
     }
 
-    async function Submit(data: CheckoutSchematype) {
+    async function Submit(enderecoData: Enderecotype) {
         if (checkout.length) {
             const pedido: Pedido = {
                 carrinho: checkout,
-                endereco: data,
+                endereco: enderecoData,
             }
 
             const response = await axios.post('http://localhost:5173/api/coffe', pedido)
 
-            setApiResponse(response.data)
+            setApiResponsePedido(response.data)
 
             if (response.status === 201) {
                 setCheckout([])
@@ -122,7 +133,7 @@ export default function CheckoutContextProvider({ children }: CheckoutContextPro
     }
 
     return (
-        <CheckoutContext.Provider value={{ checkout, SetCheckoutAdd, SetCheckoutRemove, CheckoutReducerProducts, QuantidadeProdutosNoCarrinho, QuantidadeDeCafes, Submit, apiResponse, RemoveItem }}>{/*elentos que vao aqui tem que estar na interface CheckoutContext em cima (linha 9) */}
+        <CheckoutContext.Provider value={{ checkout, SetCheckoutAdd, SetCheckoutRemove, CheckoutReducerProducts, QuantidadeProdutosNoCarrinho, QuantidadeDeCafes, Submit, apiResponsePedido, RemoveItem }}>{/*elentos que vao aqui tem que estar na interface CheckoutContext em cima (linha 9) */}
             {children}
         </CheckoutContext.Provider>
     )

@@ -9,7 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { priceFormatter } from "../../utils/formatter";
 import EmptyCard from "../../components/EmptyCarrinho";
 
-const CheckoutSchema = z.object({
+const EnderecoSchema = z.object({
     CEP: z.number(),
     rua: z.string(),
     numero: z.number(),
@@ -18,15 +18,14 @@ const CheckoutSchema = z.object({
     cidade: z.string(),
     uf: z.string(),
     pagamento: z.enum(["CARTAO_DE_CREDITO", "CARTAO_DE_DEBITO", "DINHEIRO"], { required_error: 'ERROR' }),
-    //carrinho: z.object({}).array().min(1)
 })
 
-type CheckoutSchematype = z.infer<typeof CheckoutSchema>
+type EnderecoSchematype = z.infer<typeof EnderecoSchema>
 
 export default function Checkout() {
     const { checkout, CheckoutReducerProducts, Submit } = useContext(CheckoutContext)
-    const { register, handleSubmit, control, formState: { isSubmitting } } = useForm<CheckoutSchematype>({
-        resolver: zodResolver(CheckoutSchema)
+    const { register, handleSubmit, control, formState: { isSubmitting } } = useForm<EnderecoSchematype>({
+        resolver: zodResolver(EnderecoSchema)
     })
 
     function CalcTotalPreco() {
