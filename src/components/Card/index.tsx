@@ -27,7 +27,7 @@ export default function Card({ ...Props }: Coffe) {
     return (
         <CardStyled>
             <img src={Props.img} width={120} height={120} />
-            <DivType>{Props.type.map(type => <span>{type}</span>)}</DivType>
+            <DivType>{Props.type.map((type, index) => <span key={index}>{type}</span>)}</DivType>
             <DivDescription>
                 <span>{Props.name}</span>
                 <p>{Props.description}</p>
