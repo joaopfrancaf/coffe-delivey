@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { priceFormatter } from "../../utils/formatter";
 
 export default function Carrinho({ ...Props }: Checkout) {
-    const { SetCheckoutAdd, SetCheckoutRemove, QuantidadeProdutosNoCarrinho } = useContext(CheckoutContext)
+    const { SetCheckoutAdd, SetCheckoutRemove, QuantidadeProdutosNoCarrinho, RemoveItem } = useContext(CheckoutContext)
 
     function Add() {
         SetCheckoutAdd({
@@ -17,6 +17,10 @@ export default function Carrinho({ ...Props }: Checkout) {
         SetCheckoutRemove({
             product: Props.product
         })
+    }
+
+    function RemoveItemfunction () {
+        RemoveItem(Props.product)
     }
 
     const quantidadeAmount = QuantidadeProdutosNoCarrinho(Props)
@@ -31,12 +35,12 @@ export default function Carrinho({ ...Props }: Checkout) {
                 </DivTitulo>
                 <ButtonWraper>
                     <DivMorebuttons>
-                        <DivButtonChange onClick={Remove}><Minus color='#8047F8' /></DivButtonChange>
+                        <DivButtonChange type="button" onClick={Remove}><Minus color='#8047F8' /></DivButtonChange>
                         <span>{quantidadeAmount}</span>
-                        <DivButtonChange onClick={Add}><Plus color='#8047F8' /></DivButtonChange>
+                        <DivButtonChange type="button" onClick={Add}><Plus color='#8047F8' /></DivButtonChange>
                     </DivMorebuttons>
 
-                    <DivRemoveButton><Trash color='#8047F8' />REMOVER</DivRemoveButton>
+                    <DivRemoveButton type="button" onClick={RemoveItemfunction}><Trash color='#8047F8' />REMOVER</DivRemoveButton>
 
                 </ButtonWraper>
             </DivDescricao>

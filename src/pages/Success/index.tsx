@@ -1,8 +1,13 @@
 import { DivContainer, DivTextConfirmado, DivInformacoesContainer, DivEndereco, DivPrevisao, DivPagamento, DivContainerInfoeImg, DivElement, DivIcon } from "./styles";
 import img from '../../assets/Illustration.png'
 import { MapPin, Timer, CurrencyDollar } from '@phosphor-icons/react'
+import { useContext } from "react";
+import { CheckoutContext } from "../../context/checkoutContext";
 
 export default function Success() {
+    const {apiResponse} = useContext(CheckoutContext)
+
+    console.log(apiResponse)
 
     return (
         <DivContainer>

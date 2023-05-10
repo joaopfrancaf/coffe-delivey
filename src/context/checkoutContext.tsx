@@ -22,6 +22,7 @@ interface CheckoutContext {
     QuantidadeProdutosNoCarrinho: (obj: Checkout) => number
     QuantidadeDeCafes: (obj: Coffe) => number
     Submit: (data: any) => void
+    RemoveItem: (obj: Coffe) => void
 }
 
 interface CheckoutContextProviderProps {
@@ -94,6 +95,14 @@ export default function CheckoutContextProvider({ children }: CheckoutContextPro
         return occurrences
     }
 
+    function RemoveItem(obj: Coffe) {
+        const newArray = checkout.filter(x => {
+            return x.product.id !== obj.id;
+        })
+
+        setCheckout(newArray)
+    }
+
     async function Submit(data: CheckoutSchematype) {
         if (checkout.length) {
             const pedido: Pedido = {
@@ -107,12 +116,13 @@ export default function CheckoutContextProvider({ children }: CheckoutContextPro
 
             if (response.status === 201) {
                 navigate("success")
+                setCheckout([])
             }
         }
     }
 
     return (
-        <CheckoutContext.Provider value={{ checkout, SetCheckoutAdd, SetCheckoutRemove, CheckoutReducerProducts, QuantidadeProdutosNoCarrinho, QuantidadeDeCafes, Submit, apiResponse }}>{/*elentos que vao aqui tem que estar na interface CheckoutContext em cima (linha 9) */}
+        <CheckoutContext.Provider value={{ checkout, SetCheckoutAdd, SetCheckoutRemove, CheckoutReducerProducts, QuantidadeProdutosNoCarrinho, QuantidadeDeCafes, Submit, apiResponse, RemoveItem }}>{/*elentos que vao aqui tem que estar na interface CheckoutContext em cima (linha 9) */}
             {children}
         </CheckoutContext.Provider>
     )
