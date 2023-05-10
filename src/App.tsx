@@ -3,7 +3,6 @@ import Header from "./components/Header";
 import { createServer } from "miragejs"
 
 import data from './data.json'
-import Success from "./pages/Success";
 
 createServer({
   routes() {
@@ -11,11 +10,11 @@ createServer({
       return data
     }),
 
-    this.post("/api/coffe", (schema, request) => {
-      let attrs = JSON.parse(request.requestBody)
-      console.log(attrs)
-      debugger
-    })
+      this.post("/api/coffe", (_schema, request) => {
+        const attrs = JSON.parse(request.requestBody)
+
+        return attrs
+      })
   },
 })
 

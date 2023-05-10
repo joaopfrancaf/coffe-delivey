@@ -46,7 +46,7 @@ export const DivCheckoutSeuPedidoEndereco = styled('div', {
     }
 })
 
-export const DivForm = styled('form', {
+export const DivForm = styled('div', {
     display: 'flex',
     flexWrap: 'wrap',
 

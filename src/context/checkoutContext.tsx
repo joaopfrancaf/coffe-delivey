@@ -1,13 +1,20 @@
 import { ReactNode, createContext, useState } from "react"
 import { Coffe } from "./coffeContext"
 import axios from 'axios'
+import { useNavigate } from "react-router-dom"
 
 export interface Checkout {
     product: Coffe
 }
 
+export interface Pedido {
+    carrinho: Checkout[]
+    endereco: CheckoutSchematype
+}
+
 interface CheckoutContext {
     checkout: Checkout[]
+    apiResponse: Pedido[]
     //setCheckout: React.Dispatch<React.SetStateAction<Checkout[]>> pode fazer dessa maneira ou a de baixo (fazendo um metodo para passar)
     SetCheckoutAdd: (checkout: Checkout) => void
     SetCheckoutRemove: (checkout: Checkout) => void
@@ -21,12 +28,6 @@ interface CheckoutContextProviderProps {
     children: ReactNode
 }
 
-/*enum Pagamentos {
-    CARTAO_DE_CREDITO = 'CARTAO_DE_CREDITO',
-    CARTAO_DE_DEBITO = "CARTAO_DE_DEBITO",
-    DINHEIRO = "DINHEIRO",
-}*/
-
 interface CheckoutSchematype {
     CEP: number,
     rua: string,
@@ -36,12 +37,21 @@ interface CheckoutSchematype {
     cidade: string,
     uf: string,
     pagamento: 'CARTAO_DE_CREDITO' | 'CARTAO_DE_DEBITO' | "DINHEIRO"
+    carrinho: Checkout
 }
+
+/*enum Pagamentos {
+    CARTAO_DE_CREDITO = 'CARTAO_DE_CREDITO',
+    CARTAO_DE_DEBITO = "CARTAO_DE_DEBITO",
+    DINHEIRO = "DINHEIRO",
+}*/
 
 export const CheckoutContext = createContext({} as CheckoutContext)
 
 export default function CheckoutContextProvider({ children }: CheckoutContextProviderProps) {
     const [checkout, setCheckout] = useState<Checkout[]>([])
+    const [apiResponse, setApiResponse] = useState<Pedido[]>([])
+    const navigate = useNavigate();
 
     function SetCheckoutAdd(obj: Checkout) {
         setCheckout(prevState => [...prevState, obj])
@@ -85,11 +95,24 @@ export default function CheckoutContextProvider({ children }: CheckoutContextPro
     }
 
     async function Submit(data: CheckoutSchematype) {
-        const response = axios.put('http://localhost:5173/api/coffe', data) 
+        if (checkout.length) {
+            const pedido: Pedido = {
+                carrinho: checkout,
+                endereco: data,
+            }
+
+            const response = await axios.post('http://localhost:5173/api/coffe', pedido)
+
+            setApiResponse(response.data)
+
+            if (response.status === 201) {
+                navigate("success")
+            }
+        }
     }
 
     return (
-        <CheckoutContext.Provider value={{ checkout, SetCheckoutAdd, SetCheckoutRemove, CheckoutReducerProducts, QuantidadeProdutosNoCarrinho, QuantidadeDeCafes, Submit }}>{/*elentos que vao aqui tem que estar na interface CheckoutContext em cima (linha 9) */}
+        <CheckoutContext.Provider value={{ checkout, SetCheckoutAdd, SetCheckoutRemove, CheckoutReducerProducts, QuantidadeProdutosNoCarrinho, QuantidadeDeCafes, Submit, apiResponse }}>{/*elentos que vao aqui tem que estar na interface CheckoutContext em cima (linha 9) */}
             {children}
         </CheckoutContext.Provider>
     )

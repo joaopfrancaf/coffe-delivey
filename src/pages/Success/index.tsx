@@ -3,6 +3,7 @@ import img from '../../assets/Illustration.png'
 import { MapPin, Timer, CurrencyDollar } from '@phosphor-icons/react'
 
 export default function Success() {
+
     return (
         <DivContainer>
             <DivTextConfirmado>
@@ -13,17 +14,17 @@ export default function Success() {
             <DivContainerInfoeImg>
                 <DivInformacoesContainer>
                     <DivEndereco>
-                        <DivElement><DivIcon color="roxo"><MapPin fill="white" weight="fill"/></DivIcon><p>Entrega em <span>Rua João Daniel Martinelli, 102</span> Farrapos - Porto Alegre, RS</p></DivElement>
+                        <DivElement><DivIcon color="roxo"><MapPin fill="white" weight="fill" /></DivIcon><p>Entrega em <span>Rua João Daniel Martinelli, 102</span> Farrapos - Porto Alegre, RS</p></DivElement>
                     </DivEndereco>
                     <DivPrevisao>
-                        <DivElement><DivIcon color="amarelo"><Timer fill="white" weight="fill"/></DivIcon><p>Previsão de entrega<br/><span>20 min - 30 min</span></p></DivElement>
+                        <DivElement><DivIcon color="amarelo"><Timer fill="white" weight="fill" /></DivIcon><p>Previsão de entrega<br /><span>20 min - 30 min</span></p></DivElement>
                     </DivPrevisao>
                     <DivPagamento>
-                        <DivElement><DivIcon color="ouro"><CurrencyDollar fill="white" weight="fill"/></DivIcon><p>Pagamento na entrega <br/><span>Cartão de Crédito</span></p></DivElement>
+                        <DivElement><DivIcon color="ouro"><CurrencyDollar fill="white" weight="fill" /></DivIcon><p>Pagamento na entrega <br /><span>Cartão de Crédito</span></p></DivElement>
                     </DivPagamento>
                 </DivInformacoesContainer>
 
-                <img src={img}/>
+                <img src={img} />
             </DivContainerInfoeImg>
         </DivContainer>
     )
