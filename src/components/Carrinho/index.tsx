@@ -1,37 +1,34 @@
 import { ButtonWraper, DivButtonChange, DivCarrinhoItem, DivDescricao, DivMorebuttons, DivRemoveButton, DivTitulo } from "./style";
 import { Minus, Plus, Trash } from '@phosphor-icons/react'
-import { Checkout, CheckoutContext } from "../../context/checkoutContext";
+import { CheckoutContext } from "../../context/checkoutContext";
 import { useContext } from "react";
 import { priceFormatter } from "../../utils/formatter";
+import { Coffe } from "../../context/coffeContext";
 
-export default function Carrinho({ ...Props }: Checkout) {
+export default function Carrinho({ ...Props }: Coffe) {
     const { SetCheckoutAdd, SetCheckoutRemove, QuantidadeProdutosNoCarrinho, RemoveItem } = useContext(CheckoutContext)
 
     function Add() {
-        SetCheckoutAdd({
-            product: Props.product
-        })
+        SetCheckoutAdd(Props)
     }
 
     function Remove() {
-        SetCheckoutRemove({
-            product: Props.product
-        })
+        SetCheckoutRemove(Props)
     }
 
-    function RemoveItemfunction () {
-        RemoveItem(Props.product)
+    function RemoveItemfunction() {
+        RemoveItem(Props)
     }
 
     const quantidadeAmount = QuantidadeProdutosNoCarrinho(Props)
 
     return (
         <DivCarrinhoItem>
-            <img src={Props.product.img} width={64} />
+            <img src={Props.img} width={64} />
             <DivDescricao >
                 <DivTitulo>
-                    <p>{Props.product.name}</p>
-                    <span>{priceFormatter.format(Props.product.price)}</span>
+                    <p>{Props.name}</p>
+                    <span>{priceFormatter.format(Props.price)}</span>
                 </DivTitulo>
                 <ButtonWraper>
                     <DivMorebuttons>

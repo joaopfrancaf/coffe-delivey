@@ -29,8 +29,8 @@ export default function Checkout() {
     })
 
     function CalcTotalPreco() {
-        const x = checkout.reduce((acc, currentValue) => {
-            return acc + currentValue.product.price;
+        const x = checkout.product.reduce((acc, currentValue) => {
+            return acc + currentValue.price;
         }, 0);
 
         return x
@@ -99,8 +99,8 @@ export default function Checkout() {
                     <DivCheckoutCarrinho>
                         {totalDeProdutos.length ? totalDeProdutos?.map(x => {
                             return (
-                                <div key={x.product.id} className="LOL">
-                                    <li><Carrinho key={x.product.id} product={x.product} /></li>
+                                <div key={x.id} className="LOL">
+                                    <li><Carrinho key={x.id} id={x.id} name={x.name} type={x.type} description={x.description} price={x.price} img={x.img} /></li>
                                     <div className="divspace"></div>
                                 </div>
                             )

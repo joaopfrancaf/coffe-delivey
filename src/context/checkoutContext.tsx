@@ -4,22 +4,22 @@ import axios from 'axios'
 import { useNavigate } from "react-router-dom"
 
 export interface Checkout {
-    product: Coffe
+    product: Coffe[]
 }
 
 export interface Pedido {
-    carrinho: Checkout[]
+    carrinho: Checkout
     endereco: Enderecotype
 }
 
 interface CheckoutContext {
-    checkout: Checkout[]
+    checkout: Checkout
     apiResponsePedido: Pedido
     //setCheckout: React.Dispatch<React.SetStateAction<Checkout[]>> pode fazer dessa maneira ou a de baixo (fazendo um metodo para passar)
-    SetCheckoutAdd: (checkout: Checkout) => void
-    SetCheckoutRemove: (checkout: Checkout) => void
-    CheckoutReducerProducts: () => Checkout[]
-    QuantidadeProdutosNoCarrinho: (obj: Checkout) => number
+    SetCheckoutAdd: (checkout: Coffe) => void
+    SetCheckoutRemove: (checkout: Coffe) => void
+    CheckoutReducerProducts: () => Coffe[]
+    QuantidadeProdutosNoCarrinho: (obj: Coffe) => number
     QuantidadeDeCafes: (obj: Coffe) => number
     Submit: (data: any) => void
     RemoveItem: (obj: Coffe) => void
@@ -49,9 +49,13 @@ interface Enderecotype {
 export const CheckoutContext = createContext({} as CheckoutContext)
 
 export default function CheckoutContextProvider({ children }: CheckoutContextProviderProps) {
-    const [checkout, setCheckout] = useState<Checkout[]>([])
+    const [checkout, setCheckout] = useState<Checkout>({
+        product: []
+    })
     const [apiResponsePedido, setApiResponsePedido] = useState<Pedido>({
-        carrinho: [],
+        carrinho: {
+            product: []
+        },
         endereco: {
             bairro: "",
             CEP: 0,
@@ -65,28 +69,36 @@ export default function CheckoutContextProvider({ children }: CheckoutContextPro
     })
     const navigate = useNavigate();
 
-    function SetCheckoutAdd(obj: Checkout) {
-        setCheckout(prevState => [...prevState, obj])
+    function SetCheckoutAdd(obj: Coffe) {
+        setCheckout(prevState => {
+            return {
+                product: [...prevState.product, obj]
+            }
+        })
     }
 
-    function SetCheckoutRemove(obj: Checkout) {
+    function SetCheckoutRemove(obj: Coffe) {
         //tentativas locassas, tudo isso pois o metodo que o chatgpt me deu só funfa com dados primitivos. com objetos é esse daqui:
-        const indexToRemove = checkout.findIndex(x => x.product.id === obj.product.id)
-        const newArr = checkout.filter((_obj, index) => index !== indexToRemove);
-        setCheckout(newArr)
+        const indexToRemove = checkout.product.findIndex(x => x.id === obj.id)
+        const newArr = checkout.product.filter((_obj, index) => index !== indexToRemove);
+        setCheckout(_old => {
+            return {
+                product: newArr
+            }
+        })
     }
 
     function CheckoutReducerProducts() {
-        const produtosUnicos = checkout.filter((produto, index) => {
-            return index === checkout.findIndex(p => p.product.id === produto.product.id);
+        const produtosUnicos = checkout.product.filter((produto, index) => {
+            return index === checkout.product.findIndex(p => p.id === produto.id);
         });
 
         return produtosUnicos
     }
 
-    function QuantidadeProdutosNoCarrinho(obj: Checkout) {
-        const occurrences = checkout.reduce((acc, curret) => {
-            if (curret.product.id === obj.product.id) {
+    function QuantidadeProdutosNoCarrinho(obj: Coffe) {
+        const occurrences = checkout.product.reduce((acc, curret) => {
+            if (curret.id === obj.id) {
                 acc++
             }
             return acc
@@ -96,8 +108,8 @@ export default function CheckoutContextProvider({ children }: CheckoutContextPro
     }
 
     function QuantidadeDeCafes(obj: Coffe) {
-        const occurrences = checkout.reduce((acc, curret) => {
-            if (curret.product.id === obj.id) {
+        const occurrences = checkout.product.reduce((acc, curret) => {
+            if (curret.id === obj.id) {
                 acc++
             }
             return acc
@@ -107,15 +119,19 @@ export default function CheckoutContextProvider({ children }: CheckoutContextPro
     }
 
     function RemoveItem(obj: Coffe) {
-        const newArray = checkout.filter(x => {
-            return x.product.id !== obj.id;
+        const newArray = checkout.product.filter(x => {
+            return x.id !== obj.id;
         })
 
-        setCheckout(newArray)
+        setCheckout(_old => {
+            return {
+                product: newArray
+            }
+        })
     }
 
     async function Submit(enderecoData: Enderecotype) {
-        if (checkout.length) {
+        if (checkout.product.length) {
             const pedido: Pedido = {
                 carrinho: checkout,
                 endereco: enderecoData,
@@ -126,7 +142,6 @@ export default function CheckoutContextProvider({ children }: CheckoutContextPro
             setApiResponsePedido(response.data)
 
             if (response.status === 201) {
-                setCheckout([])
                 navigate("success")
             }
         }

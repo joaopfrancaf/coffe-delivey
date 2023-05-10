@@ -11,15 +11,11 @@ export default function Card({ ...Props }: Coffe) {
     const { SetCheckoutAdd, SetCheckoutRemove, QuantidadeDeCafes } = useContext(CheckoutContext)
 
     function Add() {
-        SetCheckoutAdd({
-            product: Props
-        })
+        SetCheckoutAdd(Props)
     }
 
     function Remove() {
-        SetCheckoutRemove({
-            product: Props
-        })
+        SetCheckoutRemove(Props)
     }
 
     const amount = QuantidadeDeCafes(Props)
