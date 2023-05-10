@@ -115,8 +115,8 @@ export default function CheckoutContextProvider({ children }: CheckoutContextPro
             setApiResponse(response.data)
 
             if (response.status === 201) {
-                navigate("success")
                 setCheckout([])
+                navigate("success")
             }
         }
     }

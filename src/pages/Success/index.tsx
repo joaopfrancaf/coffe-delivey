@@ -7,8 +7,7 @@ import { CheckoutContext } from "../../context/checkoutContext";
 export default function Success() {
     const {apiResponse} = useContext(CheckoutContext)
 
-    console.log(apiResponse)
-
+    console.log(typeof apiResponse)
     return (
         <DivContainer>
             <DivTextConfirmado>
