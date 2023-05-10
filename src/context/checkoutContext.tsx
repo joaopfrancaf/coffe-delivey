@@ -11,7 +11,7 @@ export interface Pedido {
     carrinho: Checkout[]
     endereco: Enderecotype
 }
-
+//more git test
 interface CheckoutContext {
     checkout: Checkout[]
     apiResponsePedido: Pedido
