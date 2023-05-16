@@ -121,7 +121,7 @@ export default function CheckoutContextProvider({ children }: CheckoutContextPro
                 endereco: enderecoData,
             }
 
-            const response = await axios.post('http://localhost:5173/api/coffe', pedido)
+            const response = await axios.post('http://localhost:8080/pedido', pedido)
 
             setApiResponsePedido(response.data)
 

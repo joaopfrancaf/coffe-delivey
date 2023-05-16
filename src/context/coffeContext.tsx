@@ -2,7 +2,7 @@ import axios from "axios"
 import { ReactNode, createContext, useEffect, useState } from "react"
 
 export interface Coffe {
-    id: number,
+    id: string,
     name: string,
     type: [],
     description: string,
@@ -24,7 +24,7 @@ export default function CoffeContextProvider({ children }: CoffeContextProviderP
     const [coffes, setCoffes] = useState<Coffe[]>([])
 
     async function FetchApi() {
-        const response = await axios.get('http://localhost:5173/api/coffe')
+        const response = await axios.get('http://localhost:8080/coffe')
         setCoffes(response.data)
     }
 
