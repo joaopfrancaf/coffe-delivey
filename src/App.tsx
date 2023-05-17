@@ -1,6 +1,6 @@
 import RoutesApp from "./Routes";
 import Header from "./components/Header";
-import { createServer } from "miragejs"
+/*import { createServer } from "miragejs"
 
 import data from './data.json'
 
@@ -16,7 +16,7 @@ createServer({
         return attrs
       })
   },
-})
+})*/
 
 
 export default function App() {
