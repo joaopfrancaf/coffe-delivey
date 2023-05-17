@@ -24,7 +24,7 @@ export default function CoffeContextProvider({ children }: CoffeContextProviderP
     const [coffes, setCoffes] = useState<Coffe[]>([])
 
     async function FetchApi() {
-        const response = await axios.get('https://coffe-deliveryjavaspring-production.up.railway.app/coffe')
+        const response = await axios.get('coffe-deliveryjavaspring-production.up.railway.app/coffe')
         setCoffes(response.data)
     }
 
