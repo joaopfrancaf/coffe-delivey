@@ -198,6 +198,9 @@ export const FinishButton = styled('button', {
 
     '&:hover': {
         backgroundColor: '$--brand-----yellow--dark'
-    }
+    },
 
+    '&:disabled': {
+        cursor:'not-allowed'
+    }
 })
