@@ -121,7 +121,7 @@ export default function CheckoutContextProvider({ children }: CheckoutContextPro
                 endereco: enderecoData,
             }
 
-            const response = await axios.post('https://coffe-deliveryjavaspring-production.up.railway.app/pedido', pedido)
+            const response = await axios.post('https://coffe-api-nextjs.vercel.app/api', pedido)
 
             setApiResponsePedido(response.data)
 
