@@ -43,6 +43,14 @@ navigator.serviceWorker.register("service-worker.js")
       method: "POST",
       body: JSON.stringify(subs)
     })
+
+    await fetch("https://coffe-api-nextjs.vercel.app/api/push/send", {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: "POST",
+      body: JSON.stringify(subs)
+    })
   })
 
 export default function App() {
