@@ -18,8 +18,8 @@ createServer({
   },
 })*/
 
-window.Notification.requestPermission(permission => {
-})
+//window.Notification.requestPermission(permission => {
+//})
 
 navigator.serviceWorker.register("service-worker.js")
   .then(async serviceWorker => {
