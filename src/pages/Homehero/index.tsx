@@ -2,12 +2,15 @@ import { DivCafeContainer, DivCafeContainerWrap, DivHeaderFeatureStyled, DivHead
 import Imgcafe from '../../assets/Imagemcafe.png'
 import { ShoppingCart, Package, Timer, Coffee } from '@phosphor-icons/react'
 import Card from "../../components/Card";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CoffeContext } from "../../context/coffeContext";
 
 export default function Homehero() {
     const { coffes } = useContext(CoffeContext)
 
+    useEffect(() => {
+        window.location.reload()
+    })
     return (
         <>
             <DivHeaderStyled>
