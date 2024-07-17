@@ -27,6 +27,10 @@ export default function Success() {
         }
 
         sendNotification()
+
+        setTimeout(() => {
+            window.location.replace("/")
+        }, 2000);
     })
     return (
         <DivContainer>
