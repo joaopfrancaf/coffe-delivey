@@ -1,12 +1,31 @@
 import { DivContainer, DivTextConfirmado, DivInformacoesContainer, DivEndereco, DivPrevisao, DivPagamento, DivContainerInfoeImg, DivElement, DivIcon } from "./styles";
 import img from '../../assets/Illustration.png'
 import { MapPin, Timer, CurrencyDollar } from '@phosphor-icons/react'
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CheckoutContext } from "../../context/checkoutContext";
 
 export default function Success() {
     const { apiResponsePedido } = useContext(CheckoutContext)
 
+    useEffect(() => {
+
+        async function sendNotification() {
+            navigator.serviceWorker.register("service-worker.js")
+            .then(async serviceWorker => {
+                let subs = await serviceWorker.pushManager.getSubscription()
+
+                await fetch("https://coffe-api-nextjs.vercel.app/api/push/send", {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: "POST",
+                body: JSON.stringify(subs)
+                })
+            })
+        }
+
+        sendNotification()
+    })
     return (
         <DivContainer>
             <DivTextConfirmado>
