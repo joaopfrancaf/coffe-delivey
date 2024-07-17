@@ -7,10 +7,7 @@ import { CoffeContext } from "../../context/coffeContext";
 
 export default function Homehero() {
     const { coffes } = useContext(CoffeContext)
-
-    useEffect(() => {
-        window.location.reload()
-    })
+    
     return (
         <>
             <DivHeaderStyled>

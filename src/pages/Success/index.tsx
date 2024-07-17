@@ -30,7 +30,7 @@ export default function Success() {
 
         setTimeout(() => {
             window.location.replace("/")
-        }, 2000);
+        }, 3000);
     })
     return (
         <DivContainer>
