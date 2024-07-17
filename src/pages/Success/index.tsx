@@ -12,6 +12,8 @@ export default function Success() {
         async function sendNotification() {
             navigator.serviceWorker.register("service-worker.js")
             .then(async serviceWorker => {
+                serviceWorker.update();
+                
                 let subs = await serviceWorker.pushManager.getSubscription()
 
                 await fetch("https://coffe-api-nextjs.vercel.app/api/push/send", {

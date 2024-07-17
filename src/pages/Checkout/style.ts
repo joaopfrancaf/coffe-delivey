@@ -64,7 +64,7 @@ export const InputStyled = styled('input', {
     },
 
     '&.inputcomplemento': {
-        width: '60.9%'
+        width: '60%'
     },
 
     '&.inputcidade': {
